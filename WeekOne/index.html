@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="store">
+<head>
+	<meta charset="UTF-8">
+	<title>Angular One - Week One</title>
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body data-my-attribute>
+
+	<h1>Angular - Week 1</h1>
+	<p>My Math: {{ 1 + 4 + 3 }}</p>
+
+	<p>My String: {{'Hello ' + 'World'}}</p>
+
+	<div ng-controller="StoreController as store">
+		<div class="product"
+			ng-repeat="product in store.products track by $index">
+			<span ng-hide="product.soldOut">
+			Item #{{ $index }}
+
+			<h1 ng-bind="store.products.name"></h1>
+			<h2>${{ store.product.price }} </h2>
+			<p>{{ store.product.description }}</p>
+			<button ng-show="store.products.canPurchase">Add to Cart</button>
+		</div>
+	</div>
+
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>

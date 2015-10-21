@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html ng-app="store">
+	<head>
+		<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="styles.css">
+	</head>
+
+	<body>
+
+		<div ng-controller="GameController as ctrl">
+			<h2>Date: {{ ::ctrl.date | date: 'fullDate' }} </h2>
+
+		    <div 
+		        class="product"
+		        ng-repeat="product in ctrl.products | limitTo: 3 track by $index">
+		        Item #{{ $index }}                          
+		        <h1 ng-bind="product.title | uppercase"></h1>
+		        <h2>
+		            <span>
+		                {{product.price | currency }}
+		            </span>
+		        </h2>
+		        <div ng-repeat = "img in product.images">
+		        	<img ng-src="{{ img.thumb }}" width="100" height="100">
+		    	</div>
+
+				<!-- tabs -->
+		        <section ng-controller="PanelController as panel">
+	                <ul class="nav nav-pills">
+	                   <li ng-class="{ 'active': panel.isSelected(1)}"> 
+	                        <a href
+	                         ng-click="panel.selectTab(1)">
+	                         	Description
+	                         </a>
+	                    </li>    
+	                    <li ng-class="{ 'active': panel.isSelected(2)}">
+	                        <a href 
+	                        ng-click="panel.selectTab(2)">
+	                        	Actors
+	                        </a>
+	                    </li>
+	                    <li ng-class="{ 'active': panel.isSelected(3)}"> 
+	                        <a href
+	                        ng-click="panel.selectTab(3)">
+	                        	Reviews
+	                        </a> 
+	                    </li>
+	                </ul>
+
+		        <!-- tab panels -->
+			        <div class="panel" ng-show="panel.isSelected(1)">
+			        	<h4>Description</h4>
+			        	<blockquote>
+			        		{{ product.description }}
+			        	</blockquote>
+			        </div>
+			        <div class="panel" ng-show="panel.isSelected(2)">
+			        	<h4>Specifications</h4>
+			        	<blockquote>
+			        		Coming Soon
+			        	</blockquote>
+			        </div>
+			        <div class="panel" ng-show="panel.isSelected(3)">
+			        	<h4>Reviews</h4>
+			        	<blockquote>
+			        		Coming Soon
+			        	</blockquote>
+			        </div>
+
+		        </section>
+
+		        <p ng-bind="product.description"></p>
+		        <button ng-if="product.canPurchase">Add to Cart</button>    
+		    </div>
+		</div>
+
+		<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+		<script type="text/javascript" src="vidya.js"></script>
+	</body>
+</html>
