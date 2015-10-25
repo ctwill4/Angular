@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="store">
+	<head>
+		<link rel="stylesheet" type="text/css" href="js/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+	</head>
+	<body ng-controller="GameController as store">
+
+			<div>
+				<h1> {{store.products[0].title}} </h1>
+				<h2> {{store.products[0].system}} </h2>
+				<p> {{store.products[0].description}} </p>
+				<button ng-show="store.products[0].canPurchase"> Purchase Now </button>
+			</div>
+			<div>
+				<h1> {{store.products[1].title}} </h1>
+				<h2> {{store.products[1].system}} </h2>
+				<p> {{store.products[1].description}} </p>
+				<button ng-show="store.products[1].canPurchase"> Purchase Now </button>
+			</div>
+			<div>
+				<h1> {{store.products[2].title}} </h1>
+				<h2> {{store.products[2].system}} </h2>
+				<p> {{store.products[2].description}} </p>
+				<button ng-show="store.products[2].canPurchase"> Purchase Now </button>
+			</div>
+			<div>
+				<h1> {{store.products[3].title}} </h1>
+				<h2> {{store.products[3].system}} </h2>
+				<p> {{store.products[3].description}} </p>
+				<button ng-show="store.products[3].canPurchase"> Purchase Now </button>
+			</div>
+			<div>
+				<h1> {{store.products[4].title}} </h1>
+				<h2> {{store.products[4].system}} </h2>
+				<p> {{store.products[4].description}} </p>
+				<button ng-show="store.products[4].canPurchase"> Purchase Now </button>
+			</div>
+
+		<script type="text/javascript" src="js/angular.min.js"></script>
+		<script type="text/javascript" src="js/vidya.js"></script>
+	</body>
+</html>

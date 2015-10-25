@@ -1,0 +1,17 @@
+body {
+	padding: 20px;
+	margin: 0;
+}
+img {
+	margin-right: 50px;
+	float: right;
+}
+
+h1 {
+	text-align: center;
+	color: green;
+}
+
+h2 {
+	text-align: center;
+}

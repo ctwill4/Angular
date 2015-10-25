@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html ng-app="store">
+	<head>
+		<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="styles.css">
+	</head>
+
+	<body>
+
+		<div ng-controller="MovieController as ctrl">
+			<h1>Greatest Films of All Time</h1>
+			<h2>{{ ::ctrl.date | date: 'fullDate' }} </h2>
+
+		    <div 
+		        class="product"
+		        ng-repeat="product in ctrl.products">
+		        Item #{{ $index }}
+		        <h1 ng-bind="product.title | uppercase"></h1>
+		        <h2>
+		            <span>
+		                {{product.year}}
+		            </span>
+		        </h2>
+		        <div ng-repeat = "img in product.images">
+		        	<img ng-src="{{ img.thumb }}" width="130" height="200">
+		    	</div>
+
+		        <section ng-controller="PanelController as panel">
+	                <ul class="nav nav-pills">
+	                   <li ng-class="{ 'active': panel.isSelected(1)}"> 
+	                        <a href
+	                         ng-click="panel.selectTab(1)">
+	                         	Description
+	                         </a>
+	                    </li>    
+	                    <li ng-class="{ 'active': panel.isSelected(2)}">
+	                        <a href 
+	                        ng-click="panel.selectTab(2)">
+	                        	Actors
+	                        </a>
+	                    </li>
+	                    <li ng-class="{ 'active': panel.isSelected(3)}"> 
+	                        <a href
+	                        ng-click="panel.selectTab(3)">
+	                        	Review
+	                        </a> 
+	                    </li>
+	                </ul>
+	                
+			        <div class="panel" ng-show="panel.isSelected(1)">
+			        	<h4>Description</h4>
+			        	<blockquote>
+			        		{{ product.description }}
+			        	</blockquote>
+			        </div>
+			        <div class="panel" ng-show="panel.isSelected(2)">
+			        	<h4>Specifications</h4>
+			        	<blockquote>
+			        		{{ product.actors }}
+			        	</blockquote>
+			        </div>
+			        <div class="panel" ng-show="panel.isSelected(3)">
+			        	<h4>Review</h4>
+			        	<blockquote>
+			        		{{ product.review }}
+			        	</blockquote>
+			        </div>
+
+		        </section>
+
+		        <button ng-if="product.canPurchase">Add to Cart</button>    
+		    </div>
+		</div>
+
+		<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+		<script type="text/javascript" src="vidya.js"></script>
+	</body>
+</html>
