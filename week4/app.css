@@ -1,0 +1,26 @@
+body {
+	padding: 20px;
+	margin: 0;
+
+}
+
+.tab-section {
+	clear: both;
+    padding-top: 12px;
+}
+
+img {
+	margin-left: 12px;
+	float: left;
+}
+
+form {
+	background-color: lightgray;
+	margin-top: 10px 0;
+}
+
+.cf {
+	clear: both;
+	display: block;
+	margin-top: 10px;
+}

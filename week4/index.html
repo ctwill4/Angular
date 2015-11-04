@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="store">
+<head>
+	<meta charset="UTF-8">
+	<title>Week 4</title>
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="app.css">
+</head>
+<body>
+	<h1>Angular - Week Four</h1>
+	<div ng-controller="StoreController as store">
+
+		<product-date></product-date>
+			
+		<div 
+			class="product"
+			ng-repeat="product in store.products | limitTo: 3 | orderBy: '-price' track by $index"
+		 	ng-hide="product.soldOut">
+
+			<h3> <product-title> </h3>
+			<h3><em class="pull-right">$250.00</em></h3>
+			<product-panels ng-controller="PanelController as panels">
+			
+			</product-panels>
+
+
+			<div ng-repeat = "img in product.images">
+				<img ng-src="{{img.thumb}}" alt="" width="200" height="200">			
+			</div>
+			
+			<!-- tabs -->
+			<section ng-controller="PanelController as panel" class="tab-section">
+				 <ul class="nav nav-pills">
+					<li ng-class="{ 'active': panel.isSelected(1) }"> 
+					 	<a href 
+					 		ng-click="panel.selectTab(1)">
+					 			Description	
+					 	</a>
+					 </li>
+					 <li ng-class="{ 'active': panel.isSelected(2) }">
+					 	<a href 
+					 		ng-click="panel.selectTab(2)">
+					 			Specifications
+				 		</a>
+					 </li>
+					 <li ng-class="{ 'active': panel.isSelected(3) }">
+					 	<a href 
+					 		ng-click="panel.selectTab(3)">
+					 			Reviews
+					 	</a> 
+					 </li>				 
+				 </ul>
+
+				<!-- tab panels -->
+				<div class="panel" ng-show="panel.isSelected(1)">
+					<h4>Description</h4>
+					<blockquote>
+						{{ product.description }}
+					</blockquote>
+				</div>
+				<div class="panel" ng-show="panel.isSelected(2)">
+					<h4>Specifications</h4>
+					<blockquote>
+						Coming Soon
+					</blockquote>
+				</div>
+
+				<div class="panel" ng-show="panel.isSelected(3)">
+					<h4>Reviews</h4>
+					<form name="reviewForm"
+					novalidate
+					ng-controller="ReviewFormController as reviewFormCtrl"
+					ng-submit="reviewForm.$valid && reviewFormCtrl.addReview(product)">
+
+						<blockquote>
+							<b>Stars: {{reviewFormCtrl.formReview.stars}}</b>
+							{{reviewFormCtrl.formReview.body}}
+							<cite>{{reviewFormCtrl.formReview.author}}</cite>
+							<em>Agreed? {{reviewFormCtrl.formReview.terms}}</em>
+							<p>Color: {{reviewFormCtrl.formReview.color}}</p>
+						</blockquote>
+						<select ng-model="reviewFormCtrl.formReview.stars">
+							<option value="5">5 stars</option>
+							<option value="4">4 stars</option>
+							<option value="3">3 stars</option>
+							<option value="2">2 stars</option>
+							<option value="1">1 stars</option>
+						</select>
+						<textarea class="cf" ng-model="reviewFormCtrl.formReview.body" required></textarea>
+						<input type ="email" class="cf" ng-model="reviewFormCtrl.formReview.author" required>
+						<input type="checkbox" id="agree" ng-model="reviewFormCtrl.formReview.terms"> 
+							<label for="agree">I agree to the terms.</label>
+						<p>What color sticker would you like?</p>
+						<input type="radio" ng-model="reviewFormCtrl.formReview.color" value="red"> Red
+						<input type="radio" ng-model="reviewFormCtrl.formReview.color" value="green"> Green
+						<input type="radio" ng-model="reviewFormCtrl.formReview.color" value="blue"> Blue
+						<button type="submit" class="cf">Submit</button>
+					</form>
+					<!-- the '-' will filter into descending order -->
+					<blockquote ng-repeat="review in product.reviews | orderBy: '-stars' track by $index">
+					    <li>Stars: {{review.stars}}</li>
+					    <li>{{review.body}}</li>
+					    <li>From: {{review.author}}</li>
+					</blockquote>
+				</div>
+			</section>
+
+			<button ng-if="product.canPurchase">Add to Cart</button>	
+		</div>		
+	</div>
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="app.js"></script>
+	<script src="dir_js/product_title.js"></script>
+
+</body>
+</html>

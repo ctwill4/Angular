@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html ng-app>
+	<head>
+		<title>Newegg</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/styles.css">
+	</head>
+
+	<body>
+
+		<header>
+			<a href="http://www.newegg.com/" id="header-logo2015">
+		    	<img src="https://ssl-images.newegg.com/WebResource/Themes/2005/Nest/us_new_logo.png" class="header-logo">
+			</a>
+		</header>
+		<div class="container center-block">
+			<div class="jumbotron">
+				<h1 class="text-center">Welcome to NewEgg!</h1>
+
+				<form class='container' ng-sumbit='logIn()' name='logForm' novalidate>
+					<legend>Sign In</legend>
+
+					<label>Email</label>
+					<input type='text' name='email' ng-model='log.email' required>
+
+					<label>Password</label>
+					<input type='password'
+					name='password'
+					ng-modal='user.password'
+					required>
+
+					<button
+						ng-disabled='logForm.$invalid' class='btn btn-primary'> Submit
+					</button>
+
+					<a href="recpassword.html" class="forgot"> Forgot Your Password?</a>
+
+				</form>
+		
+
+				<form class='container' ng-sumbit='registerUser()' name='regForm' novalidate>
+					<legend> Not a Member? Register Here</legend>
+
+					<label>Name</label>
+					<input type='text' name='name' ng-model='user.name' required>
+
+
+					<label>Email</label>
+					<input type='email' name='email' ng-model='user.email' required>
+
+					<label>Password</label>
+					<input type='password'
+					ng-modal='user.password'
+					name='password'
+					required
+					ng-minlength='7'
+					ng-maxlength='10'>
+
+					<p class='help-block'
+					ng-show="regForm.password.$error.minlength || regForm.password.$invalid">
+					Password must be at least 7 characters.
+					</p>
+
+					<button
+						ng-disabled='regForm.$invalid' class='btn btn-primary'> Submit
+					</button>
+
+				</form>
+
+			</div>
+		</div>
+
+		<script type="text/javascript" src="bower_components/angular/angular.js"></script>
+		<!-- <script type="text/javascript" src="login.js"></script> -->
+	</body>
+</html>
