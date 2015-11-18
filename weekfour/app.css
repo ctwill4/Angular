@@ -1,0 +1,27 @@
+body {
+	padding: 20px;
+	margin: 0;
+
+}
+
+.tab-section {
+	clear: both;
+    padding-top: 12px;
+}
+
+img {
+	margin-left: 12px;
+	float: left;
+}
+
+form {
+  margin: 10px 0;
+  background-color: #f1f1f1;
+  padding: 10px;
+}
+
+.cf {
+  clear: both;
+  display: block;
+  margin-top: 10px;
+}

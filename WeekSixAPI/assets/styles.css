@@ -1,0 +1,53 @@
+body {
+	background-color: #cee3f8;
+	color: black;
+}
+
+h1, h2 {
+	text-align: center;
+}
+
+p {
+	float: left;
+	font-size: 18px;
+	font-family: "helvetica", Georgia, Sans-Serif;
+	margin: 0;
+	width: 25%;
+	padding-left: 10px;
+}
+
+.posts {
+	float: left;
+	width: 100%;
+	margin-top: 50px;
+}
+
+.title {
+	float: left;
+	width: 60%;
+	display: inline;
+	padding-left: 10px;
+}
+
+.thumbnail {
+	float: right;
+	margin-right: auto;
+	padding-right: 10px;
+}
+
+.upvotes {
+	color: #F012BE;
+}
+
+.comments {
+	font-family: georgia;
+	margin-top: 10px;
+	text-decoration: underline;
+}
+
+.author {
+	margin-right: 200px;
+	color: #FF851B;
+}
+
+/*use more angular elements to hide and show info!*/

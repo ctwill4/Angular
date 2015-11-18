@@ -1,0 +1,9 @@
+<div class="product-title" data-awesome='me'>
+  <div ng-transclude></div>
+  <h1 ng-bind="product.name | uppercase"></h1>
+  <h2>
+  <span>
+    {{ctrl.product.price | currency }}
+  </span>
+  </h2>
+</div>

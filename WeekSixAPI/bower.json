@@ -1,0 +1,21 @@
+{
+  "name": "Reddit",
+  "version": "0.0.1",
+  "homepage": "https://github.com/ctwill4/Angular",
+  "description": "Reddit Demo Using Angular",
+  "authors": [
+    "clay willett willett.clay@gmail.com"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.7",
+    "jquery": "~2.1.4"
+  }
+}

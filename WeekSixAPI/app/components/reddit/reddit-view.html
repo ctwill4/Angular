@@ -1,0 +1,16 @@
+<div class="reddit-view" ng-controller="RedditController as redditCtrl">
+	<h2>Top Posts</h2>
+	<!-- {{redditCtrl.reddit.items}} -->
+	<div
+		infinite-scroll="redditCtrl.reddit.nextPage()"
+		infinite-scroll-distance="1"
+		ng-repeat="item in redditCtrl.reddit.items track by $index"
+		class="posts">
+		<!-- <p>{{key}}: {{value}}</p> -->
+		<a href="{{item.url}}"><p class="title">{{item.title}}</p></a>
+		<a href="{{item.url}}"><img class="thumbnail" ng-src="{{item.thumbnail}}"></a>
+		<p class="upvotes">Upvotes: {{item.ups}}</p>
+		<p class="author">{{item.author}}</p>
+		<a href="http://www.reddit.com/{{item.permalink}}"><p class="comments">Comment Section</p></a>
+	</div>
+</div>
