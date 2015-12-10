@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0"/>
+	<link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+
+	<title>Flickr Angular API</title>
+
+</head>
+
+	<body ng-app="myApp" ng-controller="myController" layout="column" layout-align="top-center" class="stretch">
+
+
+
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<span class="md-flex">Search Flikr API</span> 
+			</div>
+		</md-toolbar>
+	
+		<form ng-submit="search()">
+			<md-input-container class="search-content">
+				<label>Search</label>
+				<input type="text" ng-model="searchTerm">
+			</md-input-container>
+		</form>
+
+<!-- 		<form ng-submit="search()">
+			<md-input-container label="Search for" class="search-content" ng-model="searchTerm"></md-input-container>
+		</form> -->
+		<section layout="column" layout-align="center center">
+			<md-card ng-repeat="picture in results.photos.photo">
+			<img ng-src="{{getImageUrl(picture)}}" alt="" class="md-card-image"/>
+				<h3>{{picture.title}}</h3>
+			</md-card>
+		</section>
+	
+
+	<script src="bower_components/angular/angular.min.js"></script>
+	<script src="bower_components/angular-aria/angular-aria.min.js"></script>
+	<script src="bower_components/angular-animate/angular-animate.min.js"></script>
+	<script src="bower_components/hammerjs/hammer.min.js"></script>
+	<script src="bower_components/angular-material/angular-material.min.js"></script>
+	<script src="app.js"></script>
+	<!-- <script src="theme.js"></script> -->
+	</body>
+
+</html>
