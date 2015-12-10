@@ -28,8 +28,13 @@
 					}
 				}).success(function(data) {
 
-					$scope.results = data;
+					$scope.results = [];
 
+					angular.forEach(data.photos.photo, function(item) {
+						if(item.farm !== 6) {
+							$scope.results.push(item);
+						}
+					});
 				}).error(function(error) {
 					console.error(error);
 				});
